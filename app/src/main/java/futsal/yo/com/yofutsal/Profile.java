@@ -83,7 +83,7 @@ public class Profile extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onDetach() {
+    public void onDetach() { 
         super.onDetach();
         mListener = null;
     }
