@@ -3,10 +3,23 @@ package futsal.yo.com.yofutsal;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.HashMap;
+
+import futsal.yo.com.yofutsal.Api.ApiHandler;
+import futsal.yo.com.yofutsal.Api.RegisterInterface;
+import futsal.yo.com.yofutsal.Model.ApiResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by Rifka on 11/04/2018.
@@ -16,6 +29,11 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
 
     Intent intent;
     TextView login;
+    Button signup;
+    EditText e_name, e_email, e_phone, e_password, e_c_password;
+    private RegisterInterface registerInterface;
+
+    private String name="", email="", phone="", password="", c_password="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +44,17 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
 
         setContentView(R.layout.activity_signup);
 
+        e_name = (EditText)findViewById(R.id.tv_fullname);
+        e_email = (EditText)findViewById(R.id.tv_email);
+        e_phone = (EditText)findViewById(R.id.tv_phone);
+        e_password = (EditText)findViewById(R.id.tv_password);
+        e_c_password = (EditText)findViewById(R.id.tv_re_password);
+
         login = (TextView)findViewById(R.id.tv_login);
         login.setOnClickListener(this);
+
+        signup = (Button)findViewById(R.id.btn_signup);
+        signup.setOnClickListener(this);
     }
 
     @Override
@@ -37,8 +64,73 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
                 intent = new Intent(Signup.this, Login.class);
                 startActivity(intent);
                 break;
+            case R.id.btn_signup:
+                validateInput();
+                break;
             default:
                 break;
         }
+    }
+
+    private void validateInput(){
+        name = e_name.getText().toString();
+        email = e_email.getText().toString();
+        phone = e_phone.getText().toString();
+        password = e_password.getText().toString();
+        c_password = e_c_password.getText().toString();
+
+        if(name.equals("")){
+            allertValidate("Please input name");
+        }else if(email.equals("")){
+            allertValidate("Please input email");
+        }else if(phone.equals("")){
+            allertValidate("Please input phone");
+        }else if(password.equals("")){
+            allertValidate("Please input password");
+        }else if(!c_password.equals(password)){
+            allertValidate("Re password must be same with password, === " + password + " === " + c_password);
+        }else{
+            onRegister();
+        }
+
+    }
+
+    private void allertValidate(String message){
+        Toast.makeText(Signup.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    private void onRegister(){
+//        HashMap<String, String> params = new HashMap<>();
+//        params.put("name", "Rizal SP");
+//        params.put("email", "rizalsidikp24@gmail.com");
+//        params.put("password", "hahahaha");
+//        params.put("c_password", "hahahaha");
+//        params.put("scope", "scope");
+
+        registerInterface = ApiHandler.getApi().create(RegisterInterface.class);
+        Call<ApiResponse> register = registerInterface.registerAccount(name, email, phone, password, c_password, "player");
+        register.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                try{
+                    if(response.isSuccessful()){
+                        Toast.makeText(Signup.this, "get Token : " + response.body().getSuccess().getToken(), Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(Signup.this, "failed : " + response.errorBody().string() , Toast.LENGTH_SHORT).show();
+                        Log.d("failure", "onResponse: " + response.code() + " ====== " + response.errorBody().string());
+                    }
+                }catch (Exception e){
+                    Log.d("failure", e.getMessage());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Toast.makeText(Signup.this, "gagal", Toast.LENGTH_SHORT).show();
+                String message = t.getMessage();
+                Log.d("failure", message);
+            }
+        });
+
     }
 }
