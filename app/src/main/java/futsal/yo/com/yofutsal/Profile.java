@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-public class Profile extends Fragment implements View.OnClickListener{
+public class Profile extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -44,24 +44,36 @@ public class Profile extends Fragment implements View.OnClickListener{
         return fragment;
     }
 
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_profile,
+                container, false);
 
-        LinearLayout viewProfile = (LinearLayout)container.findViewById(R.id.ViewEditProfile);
+        LinearLayout viewProfile = view.findViewById(R.id.ViewEditProfile);
 
-        viewProfile.setOnClickListener(this);
+        viewProfile.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                // do something
+                Intent intent = new Intent();
+                intent.setClass(getActivity(), ViewProfile.class);
+                startActivity(intent);
+            }
+        });
 
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        return  view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -88,18 +100,18 @@ public class Profile extends Fragment implements View.OnClickListener{
         mListener = null;
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.ViewEditProfile:
-                Intent intent = new Intent();
-                intent.setClass(getActivity(), ViewProfile.class);
-                startActivity(intent);
-                break;
-            default:
-                break;
-        }
-    }
+//    @Override
+//    public void onClick(View view) {
+////        switch (view.getId()) {
+////            case R.id.ViewEditProfile:
+////                Intent intent = new Intent();
+////                intent.setClass(getActivity(), ViewProfile.class);
+////                startActivity(intent);
+////                break;
+////            default:
+////                break;
+////        }
+//    }
 
     /**
      * This interface must be implemented by activities that contain this

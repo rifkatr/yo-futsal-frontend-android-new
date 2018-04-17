@@ -1,5 +1,6 @@
 package futsal.yo.com.yofutsal;
 
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -18,10 +19,13 @@ public class TabMenu extends AppCompatActivity implements Home.OnFragmentInterac
         setContentView(R.layout.activity_tab_menu);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tablayout);
-        tabLayout.addTab(tabLayout.newTab().setText("A"));
-        tabLayout.addTab(tabLayout.newTab().setText("B"));
-        tabLayout.addTab(tabLayout.newTab().setText("C"));
-        tabLayout.addTab(tabLayout.newTab().setText("D"));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.mipmap.ic_home_black));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.mipmap.ic_search_black));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.mipmap.ic_notif_black));
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.mipmap.ic_profile_black));
+//        tabLayout.setSelectedTabIndicatorColor(Color.parseColor("#FF0000"));
+//        tabLayout.setSelectedTabIndicatorHeight((int) (5 * getResources().getDisplayMetrics().density));
+//        tabLayout.setTabTextColors(Color.parseColor("#727272"), Color.parseColor("#000000"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
