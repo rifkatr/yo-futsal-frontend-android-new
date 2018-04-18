@@ -22,8 +22,8 @@ public interface RegisterInterface {
 //    })
     @FormUrlEncoded
     @POST("register")
-    public Call<ApiResponse> registerAccount(@Field("name") String id,
-                                             @Field("email") String secret,
+    public Call<ApiResponse> registerAccount(@Field("name") String name,
+                                             @Field("email") String email,
                                              @Field("phone_number") String phone_number,
                                              @Field("password") String password,
                                              @Field("c_password") String c_password,
