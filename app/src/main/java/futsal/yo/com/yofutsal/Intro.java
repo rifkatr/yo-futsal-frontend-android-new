@@ -15,6 +15,9 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import futsal.yo.com.yofutsal.Helper.AccessToken;
 
 /**
  * Created by Rifka on 10/04/2018.
@@ -28,6 +31,9 @@ public class Intro extends Activity{
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
+    private AccessToken accessToken;
+
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,8 @@ public class Intro extends Activity{
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_intro);
+
+        getAccessToken();
 
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
@@ -55,6 +63,16 @@ public class Intro extends Activity{
         viewPagerAdapter = new ViewPagerAdapter();
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+    }
+
+//  cekAccessToken
+    private void getAccessToken(){
+        String token = accessToken.getToken(Intro.this);
+        if(!token.equals("")){
+            intent = new Intent(Intro.this, TabMenu.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     //btnSkip
