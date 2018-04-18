@@ -9,6 +9,7 @@
     <color name="head">#39a263</color>
     <color name="white_smoke">#ECECEC</color>
     <color name="white">#FFFFFF</color>
+    <color name="darkgray">#898989</color>
 
     <!-- Screens background -->
     <color name="bg_screen1">#b12515</color>
