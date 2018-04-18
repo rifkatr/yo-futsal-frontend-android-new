@@ -14,14 +14,22 @@ public class Success {
     @SerializedName("message")
     @Expose
     private String message;
+
     @SerializedName("users")
     @Expose
-
     private List<Users> users = null;
 
     @SerializedName("token")
     @Expose
     private String token;
+
+    @SerializedName("user")
+    @Expose
+    private Users user;
+
+    public Users getUser(){ return user; }
+
+    public void setUser(){ this.user = user; }
 
     public String getMessage() {
         return message;
