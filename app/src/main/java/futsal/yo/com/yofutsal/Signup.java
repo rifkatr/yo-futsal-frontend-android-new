@@ -16,6 +16,8 @@ import java.util.HashMap;
 
 import futsal.yo.com.yofutsal.Api.ApiHandler;
 import futsal.yo.com.yofutsal.Api.RegisterInterface;
+import futsal.yo.com.yofutsal.Helper.AccessToken;
+import futsal.yo.com.yofutsal.Helper.ButtonHandler;
 import futsal.yo.com.yofutsal.Model.ApiResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,6 +36,8 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
     private RegisterInterface registerInterface;
 
     private String name="", email="", phone="", password="", c_password="";
+
+    AccessToken accessToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +65,7 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.tv_login:
-                intent = new Intent(Signup.this, Login.class);
-                startActivity(intent);
+                finish();
                 break;
             case R.id.btn_signup:
                 validateInput();
@@ -107,30 +110,33 @@ public class Signup extends AppCompatActivity implements View.OnClickListener{
 //        params.put("c_password", "hahahaha");
 //        params.put("scope", "scope");
 
-        registerInterface = ApiHandler.getApi().create(RegisterInterface.class);
+        ButtonHandler.setDisableButton(signup);
+        registerInterface = ApiHandler.getApi(Signup.this).create(RegisterInterface.class);
         Call<ApiResponse> register = registerInterface.registerAccount(name, email, phone, password, c_password, "player");
         register.enqueue(new Callback<ApiResponse>() {
             @Override
             public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
                 try{
                     if(response.isSuccessful()){
-                        Toast.makeText(Signup.this, "get Token : " + response.body().getSuccess().getToken(), Toast.LENGTH_SHORT).show();
+                        accessToken.setToken(Signup.this, response.body().getSuccess().getToken());
+                        intent = new Intent(Signup.this, TabMenu.class);
+                        startActivity(intent);
+                        Login.loginPage.finish();
+                        finish();
                     }else{
-                        Toast.makeText(Signup.this, "failed : " + response.errorBody().string() , Toast.LENGTH_SHORT).show();
-                        Log.d("failure", "onResponse: " + response.code() + " ====== " + response.errorBody().string());
+                        Toast.makeText(Signup.this, response.errorBody().string() , Toast.LENGTH_SHORT).show();
                     }
                 }catch (Exception e){
-                    Log.d("failure", e.getMessage());
+                    Toast.makeText(Signup.this, e.getMessage() , Toast.LENGTH_SHORT).show();
                 }
+                ButtonHandler.setEnableButton(signup, R.string.signup);
             }
 
             @Override
             public void onFailure(Call<ApiResponse> call, Throwable t) {
-                Toast.makeText(Signup.this, "gagal", Toast.LENGTH_SHORT).show();
-                String message = t.getMessage();
-                Log.d("failure", message);
+                Toast.makeText(Signup.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                ButtonHandler.setEnableButton(signup, R.string.signup);
             }
         });
-
     }
 }
