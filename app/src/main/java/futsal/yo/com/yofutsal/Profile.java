@@ -9,6 +9,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import futsal.yo.com.yofutsal.Api.ApiHandler;
+import futsal.yo.com.yofutsal.Api.UsersInterface;
+import futsal.yo.com.yofutsal.Helper.AccessToken;
+import futsal.yo.com.yofutsal.Model.ApiResponse;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Profile extends Fragment{
     // TODO: Rename parameter arguments, choose names that match
@@ -19,8 +29,12 @@ public class Profile extends Fragment{
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    TextView t_email;
+    TextView t_phone;
 
     private OnFragmentInteractionListener mListener;
+
+    private UsersInterface usersInterface;
 
     public Profile() {
         // Required empty public constructor
@@ -58,7 +72,14 @@ public class Profile extends Fragment{
         View view = inflater.inflate(R.layout.fragment_profile,
                 container, false);
 
+
+
         LinearLayout viewProfile = view.findViewById(R.id.ViewEditProfile);
+        LinearLayout logout = view.findViewById(R.id.LinearLogOut);
+        t_email = view.findViewById(R.id.pr_email);
+        t_phone = view.findViewById(R.id.pr_phone);
+
+        getUserData();
 
         viewProfile.setOnClickListener(new View.OnClickListener()
         {
@@ -72,8 +93,44 @@ public class Profile extends Fragment{
             }
         });
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AccessToken.removeToken(getContext());
+                Intent i = new Intent();
+                i.setClass(getActivity(), Login.class);
+                startActivity(i);
+                getActivity().finish();
+            }
+        });
+
         // Inflate the layout for this fragment
         return  view;
+    }
+
+    private void getUserData(){
+        usersInterface = ApiHandler.getApi(getActivity()).create(UsersInterface.class);
+        Call<ApiResponse> getUserResponse = usersInterface.getUser();
+        getUserResponse.enqueue(new Callback<ApiResponse>() {
+            @Override
+            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                try {
+                    if(response.isSuccessful()){
+                        t_email.setText(response.body().getSuccess().getUser().getName());
+                        t_phone.setText(response.body().getSuccess().getUser().getPhoneNumber());
+                    }else{
+                        Toast.makeText(getActivity(), response.errorBody().string() , Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(getActivity(), "catch : " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), "fail : " + t.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
