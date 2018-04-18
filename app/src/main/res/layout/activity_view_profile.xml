@@ -117,10 +117,11 @@
                         android:textSize="7pt"/>
 
                     <TextView
+                        android:id="@+id/vp_name"
                         android:paddingTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Rifka Rifkaturohmah"
+                        android:text="-"
                         android:textStyle="bold"
                         android:textSize="7pt"/>
 
@@ -148,10 +149,11 @@
                         android:textSize="7pt"/>
 
                     <TextView
+                        android:id="@+id/vp_email"
                         android:paddingTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="rifka.turohmah94@gmail.com"
+                        android:text="-"
                         android:textStyle="bold"
                         android:textSize="7pt"/>
 
@@ -179,11 +181,12 @@
                         android:textSize="7pt"/>
 
                     <TextView
+                        android:id="@+id/vp_phone"
                         android:paddingTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="088218673001"
                         android:textStyle="bold"
+                        android:text="-"
                         android:textSize="7pt"/>
 
                 </LinearLayout>
@@ -210,10 +213,11 @@
                         android:textSize="7pt"/>
 
                     <TextView
+                        android:id="@+id/vp_gender"
                         android:paddingTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Female"
+                        android:text="-"
                         android:textStyle="bold"
                         android:textSize="7pt"/>
 
@@ -241,10 +245,11 @@
                         android:textSize="7pt"/>
 
                     <TextView
+                        android:id="@+id/vp_birthdate"
                         android:paddingTop="7dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="13 June 2000"
+                        android:text="-"
                         android:textStyle="bold"
                         android:textSize="7pt"/>
 
