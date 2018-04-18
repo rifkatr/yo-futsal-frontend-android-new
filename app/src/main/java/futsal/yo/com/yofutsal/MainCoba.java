@@ -42,7 +42,7 @@ public class MainCoba extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        usersInterface = ApiHandler.getApi().create(UsersInterface.class);
+        usersInterface = ApiHandler.getApi(MainCoba.this).create(UsersInterface.class);
 
         Call<ApiResponse> call = usersInterface.getUsers();
 
