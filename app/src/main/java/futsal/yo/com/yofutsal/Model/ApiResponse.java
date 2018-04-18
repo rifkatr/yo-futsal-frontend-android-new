@@ -12,14 +12,6 @@ public class ApiResponse {
     @Expose
     private Success success;
 
-    @SerializedName("error")
-    @Expose
-    private String error;
-
-    public String getError(){
-        return error;
-    }
-
     public Success getSuccess() {
         return success;
     }
