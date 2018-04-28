@@ -18,11 +18,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by rizalsidikp on 15/04/18.
+ * Created by yo-futsal on 15/04/18.
  */
 
 public class ApiHandler {
-    public static final String BASE_URL = "http://192.168.43.49:8000/api/";
+    public static final String BASE_URL = "http://192.168.43.217:8000/api/";
     public static Retrofit retrofit = null;
 
     public static Retrofit getApi(final Context context){

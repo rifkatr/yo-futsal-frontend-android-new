@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class ApiResponse {
     @SerializedName("success")
     @Expose
-    private Success success;
+    private Success success; //object
 
     public Success getSuccess() {
         return success;

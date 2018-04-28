@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -12,64 +13,91 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:background="@drawable/bg_signup"
-            android:orientation="vertical"
-            android:layout_height="175dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:orientation="horizontal">
+                android:layout_height="60dp"
+                android:background="@color/head"
+                android:minHeight="?attr/actionBarSize"
+                android:contentInsetLeft="0dp"
+                android:contentInsetStart="0dp"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp">
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center">
+                        android:layout_height="match_parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Profile"
-                            android:textColor="#fff"
-                            android:textSize="16dp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="40dp"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:padding="4dp">
-
-                        <ImageView
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@mipmap/ic_back_white"/>
+                            android:gravity="center">
 
-                    </LinearLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Profile"
+                                android:textStyle="bold"
+                                android:textColor="#fff"
+                                android:textSize="20dp"/>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingRight="13dp"
-                        android:text="Edit"
-                        android:gravity="center|right"
-                        android:textColor="#F39C12"
-                        android:textSize="16dp"/>
+                        </LinearLayout>
 
-                </RelativeLayout>
+                        <LinearLayout
+                            android:id="@+id/LinearBack"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="4dp"
+                            android:layout_marginLeft="10dp">
 
-            </LinearLayout>
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@mipmap/ic_back_white"/>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/LinearEdit"
+                            android:layout_width="40dp"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:padding="5dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_alignParentRight="true">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:src="@mipmap/ic_edit_white"/>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.Toolbar>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/bg_signup"
+            android:orientation="vertical"
+            android:layout_height="155dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.5"
+                android:layout_height="match_parent"
                 android:gravity="center">
 
                 <LinearLayout

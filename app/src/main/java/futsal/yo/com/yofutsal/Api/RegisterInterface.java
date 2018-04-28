@@ -1,8 +1,8 @@
 package futsal.yo.com.yofutsal.Api;
 
-import java.util.HashMap;
 
 import futsal.yo.com.yofutsal.Model.ApiResponse;
+import java.util.HashMap;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -27,6 +27,8 @@ public interface RegisterInterface {
                                              @Field("phone_number") String phone_number,
                                              @Field("password") String password,
                                              @Field("c_password") String c_password,
+                                             @Field("birthdate") String birthdate,
+                                             @Field("gender") String gender,
                                              @Field("scope") String scope);
 
 }

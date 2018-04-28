@@ -44,7 +44,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Sign Up"
+                                android:text="Edit Profile"
                                 android:textStyle="bold"
                                 android:textColor="#fff"
                                 android:textSize="20dp"/>
@@ -151,6 +151,52 @@
             </LinearLayout>
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center|left"
+                android:background="@drawable/edittext_bottom_line">
+
+                <EditText
+                    android:id="@+id/tv_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="10dp"
+                    android:background="@drawable/edittext_no_bottom_line"
+                    android:textColor="@color/madison"
+                    android:textColorHint="#909090"
+                    android:inputType="number|phone"
+                    android:hint="Phone Number" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:gravity="center|left"
+                android:background="@drawable/edittext_bottom_line"
+                android:orientation="vertical">
+
+                <Spinner
+                    android:id="@+id/SpinnerGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:paddingLeft="12dp"
+                    android:entries="@array/arrayGender2"
+                    android:textColor="@color/madison">
+
+                </Spinner>
+
+                <TextView
+                    android:id="@+id/tv_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="null"
+                    android:visibility="gone"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/Birthdate"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
@@ -196,93 +242,8 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center|left"
-                android:background="@drawable/edittext_bottom_line"
-                android:orientation="vertical">
-
-                <Spinner
-                    android:id="@+id/SpinnerGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingLeft="12dp"
-                    android:entries="@array/arrayGender"
-                    android:textColor="@color/madison">
-
-                </Spinner>
-                <TextView
-                    android:id="@+id/tv_gender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="null"
-                    android:visibility="gone"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center|left"
-                android:background="@drawable/edittext_bottom_line">
-
-                <EditText
-                    android:id="@+id/tv_phone"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:background="@drawable/edittext_no_bottom_line"
-                    android:textColor="@color/madison"
-                    android:textColorHint="#909090"
-                    android:inputType="number|phone"
-                    android:hint="Phone Number" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center|left"
-                android:background="@drawable/edittext_bottom_line">
-
-                <EditText
-                    android:id="@+id/tv_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:background="@drawable/edittext_no_bottom_line"
-                    android:textColor="@color/madison"
-                    android:textColorHint="#909090"
-                    android:inputType="textPassword"
-                    android:hint="Choose a Password" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:gravity="center|left"
-                android:background="@drawable/edittext_bottom_line">
-
-                <EditText
-                    android:id="@+id/tv_re_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="10dp"
-                    android:background="@drawable/edittext_no_bottom_line"
-                    android:textColor="@color/madison"
-                    android:textColorHint="#909090"
-                    android:inputType="textPassword"
-                    android:hint="Re-Password" />
-
-            </LinearLayout>
-
             <Button
-                android:id="@+id/btn_signup"
+                android:id="@+id/btn_save"
                 android:layout_marginTop="30dp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -291,34 +252,7 @@
                 android:background="@drawable/button_login"
                 android:textColor="@color/gray"
                 android:textSize="7pt"
-                android:text="Sign Up"/>
-
-            <LinearLayout
-                android:layout_marginTop="15dp"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.25"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="#909090"
-                    android:text="Already have an account?" />
-
-                <TextView
-                    android:id="@+id/tv_login"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:textColor="#3FC380"
-                    android:text="  Log In"
-                    android:linksClickable="true"/>
-
-            </LinearLayout>
+                android:text="@string/edit"/>
 
         </LinearLayout>
 

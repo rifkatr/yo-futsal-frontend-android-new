@@ -7,6 +7,7 @@
     <string name="start">Start</string>
     <string name="login">LOG IN</string>
     <string name="signup">SIGN UP</string>
+    <string name="edit">SAVE</string>
     <string name="title_slide1">Connect the charger</string>
     <string name="desc_slide1">It will start automatically when charger is connected</string>
     <string name="title_slide2">Battery status update</string>
@@ -16,10 +17,15 @@
 
     <!--sign up -->
     <string-array name="arrayGender">
+        <item>Choose Gender</item>
         <item>Male</item>
         <item>Female</item>
     </string-array>
 
+    <string-array name="arrayGender2">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
     <!--strings for color-->
     <string name="gray">#898989</string>
     <string name="colorAccent">#16A085</string>

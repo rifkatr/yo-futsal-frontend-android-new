@@ -17,7 +17,7 @@ public class Success {
 
     @SerializedName("users")
     @Expose
-    private List<Users> users = null;
+    private List<Users> users = null; //array object
 
     @SerializedName("token")
     @Expose

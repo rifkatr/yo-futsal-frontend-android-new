@@ -72,8 +72,6 @@ public class Profile extends Fragment{
         View view = inflater.inflate(R.layout.fragment_profile,
                 container, false);
 
-
-
         LinearLayout viewProfile = view.findViewById(R.id.ViewEditProfile);
         LinearLayout logout = view.findViewById(R.id.LinearLogOut);
         t_email = view.findViewById(R.id.pr_email);
@@ -156,19 +154,6 @@ public class Profile extends Fragment{
         super.onDetach();
         mListener = null;
     }
-
-//    @Override
-//    public void onClick(View view) {
-////        switch (view.getId()) {
-////            case R.id.ViewEditProfile:
-////                Intent intent = new Intent();
-////                intent.setClass(getActivity(), ViewProfile.class);
-////                startActivity(intent);
-////                break;
-////            default:
-////                break;
-////        }
-//    }
 
     /**
      * This interface must be implemented by activities that contain this
